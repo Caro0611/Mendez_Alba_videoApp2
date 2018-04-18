@@ -1,4 +1,4 @@
-var config = {
+const config = {
   host : "localhost",
   port : 8889,
   user : "root",

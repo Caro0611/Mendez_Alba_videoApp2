@@ -1,25 +1,29 @@
-var myApp = {
-  // some code that wouldn't necessarily go inside a viewmodel here
+const myApp = {
+  // some non-VM functionality would go here -> split the movies into genres using Vue
   movieGenres(data, genres) {
-    //filter the dataset and create an array of genres => one object for each genre
-    genres.forEach((genre, index) => myApp.vm.genres.push({name : genre, movies : data.filter(movie => movie.genre_name === genre) }));
+    genres.forEach((genre, index) => {
+      myApp.vm.genres.push({
+        name : genre,
+        movies : data.filter(movie => movie.genre_name === genre)
+      })
+    })
   },
 
   vm : new Vue({
-    delimiters : ["${","}"],
-
     el : "#app",
 
     data : {
-      message : "welcome to Vue! and my Netflix ripoff",
+      message : "Welcome to my Netflix ripoff!",
 
-      genres : []
+      genres : [] // these get populated from the function at the top of the file
     },
 
     methods : {
-      // nothin here yet
-    }
+
+    },
+
+    delimiters : ["${", "}"]
   })
 }
 
-myApp.movieGenres(appData.movies, ["Family", "Drama","Action", "Comedy", "Adventure", "Crime"]);
+myApp.movieGenres(appData.movies, ["Family", "Action", "Fantasy"]);
